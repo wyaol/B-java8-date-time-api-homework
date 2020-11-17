@@ -1,6 +1,8 @@
 package com.thoughtworks.capability.gtb;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 /**
  * 对任意日期获取下一个工作日, 不考虑节假日
@@ -11,6 +13,10 @@ import java.time.LocalDate;
 public class Practice2 {
 
   public static LocalDate getNextWorkDate(LocalDate date) {
-    return null;
+    LocalDate resDate = LocalDate.from(date);
+    do {
+      resDate = resDate.plusDays(1);
+    } while (resDate.getDayOfWeek().equals(DayOfWeek.SATURDAY) || resDate.getDayOfWeek().equals(DayOfWeek.SUNDAY));
+    return resDate;
   }
 }
